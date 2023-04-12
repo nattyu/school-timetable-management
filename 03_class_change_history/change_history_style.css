@@ -1,0 +1,40 @@
+.link_area {
+    display: flex;
+}
+
+.link_area .links {
+    display: inline-block;
+    margin-right: 1.5em;
+}
+
+.history_form {
+    width: 90vw;
+    margin: 10px;
+}
+
+.history_item {
+    display: flex;
+    align-items: center;
+}
+
+.chk_area {
+    margin-right: 2em;
+}
+
+.before_after_area {
+    display: flex;
+    align-items: center;
+}
+
+.before,
+.arrow,
+.after {
+    margin-right: 1em;
+}
+
+.btn {
+    margin: 1em 1.5em 1em 0;
+    padding: 0 1em;
+    border: 0.5px solid black;
+    border-radius: 3px;
+}
