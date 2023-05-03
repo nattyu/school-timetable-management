@@ -58,23 +58,21 @@ $stmt_insert_change_data = $pdo->prepare(
         after_teacher , 
         after_place , 
         create_at 
-    ) VALUES(
-        'give' , 
-        '$date_data' , 
-        '$insert_class_name' , 
-        '$insert_class_day' , 
-        '$insert_class_time' , 
-        '$insert_before_subject' , 
-        '$insert_before_teacher' , 
-        '$insert_before_place' , 
-        '$insert_after_subject' , 
-        '$insert_after_teacher' , 
-        '$insert_after_place' , 
-        now()
-    )"
+    ) VALUES('give', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now())"
 );
 
-$stmt_insert_change_data->execute();
+$stmt_insert_change_data->execute([
+    "$date_data",
+    "$insert_class_name",
+    "$insert_class_day",
+    "$insert_class_time",
+    "$insert_before_subject",
+    "$insert_before_teacher",
+    "$insert_before_place",
+    "$insert_after_subject",
+    "$insert_after_teacher",
+    "$insert_after_place"
+]);
 
 ?>
 <!DOCTYPE html>
@@ -93,23 +91,23 @@ $stmt_insert_change_data->execute();
     <main class="main-contents">
         <h1>時間割変更を登録しました</h1>
         <div class="class_info">
-            <p>クラス：<?php echo $result_searched_class["class_item_ja"]; ?></p>
-            <p>曜日：<?php echo $result_searched_day["day_item_ja"]; ?></p>
-            <p>時間：<?php echo $result_searched_time["time_item_ja"]; ?></p>
+            <p>クラス：<?php echo htmlspecialchars($result_searched_class["class_item_ja"], ENT_QUOTES, 'UTF-8'); ?></p>
+            <p>曜日：<?php echo htmlspecialchars($result_searched_day["day_item_ja"], ENT_QUOTES, 'UTF-8'); ?></p>
+            <p>時間：<?php echo htmlspecialchars($result_searched_time["time_item_ja"], ENT_QUOTES, 'UTF-8'); ?></p>
         </div>
         <div class="result_window">
             <div class="before">
                 <p>変更前</p>
-                <p>教科：<?php echo $result_before_subject[$class_data - 1][$before_column]; ?></p>
-                <p>担当：<?php echo $result_before_teacher[$class_data - 1][$before_column]; ?></p>
-                <p>教室：<?php echo $result_before_place[$class_data - 1][$before_column]; ?></p>
+                <p>教科：<?php echo htmlspecialchars($result_before_subject[$class_data - 1][$before_column], ENT_QUOTES, 'UTF-8'); ?></p>
+                <p>担当：<?php echo htmlspecialchars($result_before_teacher[$class_data - 1][$before_column], ENT_QUOTES, 'UTF-8'); ?></p>
+                <p>教室：<?php echo htmlspecialchars($result_before_place[$class_data - 1][$before_column], ENT_QUOTES, 'UTF-8'); ?></p>
             </div>
             <p class="arrow">→</p>
             <div class="after">
                 <p>変更前</p>
-                <p>教科：<?php echo $_POST["subject-select"]; ?></p>
-                <p>担当：<?php echo $_POST["teacher-select"]; ?></p>
-                <p>教室：<?php echo $_POST["place-select"]; ?></p>
+                <p>教科：<?php echo htmlspecialchars($_POST["subject-select"], ENT_QUOTES, 'UTF-8'); ?></p>
+                <p>担当：<?php echo htmlspecialchars($_POST["teacher-select"], ENT_QUOTES, 'UTF-8'); ?></p>
+                <p>教室：<?php echo htmlspecialchars($_POST["place-select"], ENT_QUOTES, 'UTF-8'); ?></p>
             </div>
         </div>
     </main>
