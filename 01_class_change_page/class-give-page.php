@@ -46,24 +46,24 @@ date_default_timezone_set ('Asia/Tokyo');
                         <option value="" hidden>クラスを選択</option>
                         <?php for ($i = 0; $i < count($result_class); $i++){
                             if ((string)$result_class[$i][0] == $_POST["class-select"]) {
-                                echo "<option value='" . $result_class[$i][0] . "' selected>" . $result_class[$i][1] . "</option>" ;
+                                echo "<option value='" . htmlspecialchars($result_class[$i][0], ENT_QUOTES, 'UTF-8') . "' selected>" . htmlspecialchars($result_class[$i][1], ENT_QUOTES, 'UTF-8') . "</option>" ;
                             } else {
-                                echo "<option value='" . $result_class[$i][0] . "'>" . $result_class[$i][1] . "</option>" ;
+                                echo "<option value='" . htmlspecialchars($result_class[$i][0], ENT_QUOTES, 'UTF-8') . "'>" . htmlspecialchars($result_class[$i][1], ENT_QUOTES, 'UTF-8') . "</option>" ;
                             }
                         } ?>
                     </select>
                     <!-- 日付選択 -->
                     <p class="col-1 m-0">日付</p>
-                    <input class="col-2" type="date" name="day-select" value="<?php if (!empty($_POST["day-select"])) echo $_POST["day-select"]; ?>">
+                    <input class="col-2" type="date" name="day-select" value="<?php if (!empty($_POST["day-select"])) echo htmlspecialchars($_POST["day-select"], ENT_QUOTES, 'UTF-8'); ?>">
                     <!-- 時間選択 -->
                     <p class="col-1 m-0">時間</p>
                     <select name="time-select" class="selection-area col-2">
                         <option value="" hidden>時間を選択</option>
                         <?php for ($i = 0; $i < count($result_time); $i++){
                             if ($result_time[$i][0] == $_POST["time-select"]) {
-                                echo "<option value='" . $result_time[$i][0] . "' selected>" . $result_time[$i][1] . "</option>" ;
+                                echo "<option value='" . htmlspecialchars($result_time[$i][0], ENT_QUOTES, 'UTF-8') . "' selected>" . htmlspecialchars($result_time[$i][1], ENT_QUOTES, 'UTF-8') . "</option>" ;
                             } else {
-                                echo "<option value='" . $result_time[$i][0] . "'>" . $result_time[$i][1] . "</option>" ;
+                                echo "<option value='" . htmlspecialchars($result_time[$i][0], ENT_QUOTES, 'UTF-8') . "'>" . htmlspecialchars($result_time[$i][1], ENT_QUOTES, 'UTF-8') . "</option>" ;
                             }
                         } ?>
                     </select>
@@ -73,9 +73,9 @@ date_default_timezone_set ('Asia/Tokyo');
             </div>
             <!-- 行 -->
             <div class="searched-class row my-3">
-                <p class="subject col-1">教科：</p><p class="col-2"><?php if (!empty($_POST["class-select"])) echo $result_before_subject[$_POST["class-select"] - 1][$selected_column]; ?></p>
-                <p class="teacher col-1">担当：</p><p class="col-2"><?php if (!empty($_POST["class-select"])) echo $result_before_teacher[$_POST["class-select"] - 1][$selected_column]; ?></p>
-                <p class="place col-1">教室：</p><p class="col-2"><?php if (!empty($_POST["class-select"])) echo $result_before_place[$_POST["class-select"] - 1][$selected_column]; ?></p>
+                <p class="subject col-1">教科：</p><p class="col-2"><?php if (!empty($_POST["class-select"])) echo htmlspecialchars($result_before_subject[$_POST["class-select"] - 1][$selected_column], ENT_QUOTES, 'UTF-8'); ?></p>
+                <p class="teacher col-1">担当：</p><p class="col-2"><?php if (!empty($_POST["class-select"])) echo htmlspecialchars($result_before_teacher[$_POST["class-select"] - 1][$selected_column], ENT_QUOTES, 'UTF-8'); ?></p>
+                <p class="place col-1">教室：</p><p class="col-2"><?php if (!empty($_POST["class-select"])) echo htmlspecialchars($result_before_place[$_POST["class-select"] - 1][$selected_column], ENT_QUOTES, 'UTF-8'); ?></p>
             </div>
             <!-- 行 -->
             <p class="after-title row my-3">変更後の授業を選択</p>
@@ -88,9 +88,9 @@ date_default_timezone_set ('Asia/Tokyo');
                         <option value="" hidden>教科を選択</option>
                         <?php for ($i = 0; $i < count($result_after_subject); $i++){
                             if ($result_after_subject[$i][0] == $_POST["subject-select"]) {
-                                echo "<option value='" . $result_after_subject[$i][0] . "' selected>" . $result_after_subject[$i][0] . "</option>" ;
+                                echo "<option value='" . htmlspecialchars($result_after_subject[$i][0], ENT_QUOTES, 'UTF-8') . "' selected>" . htmlspecialchars($result_after_subject[$i][0], ENT_QUOTES, 'UTF-8') . "</option>" ;
                             } else {
-                                echo "<option value='" . $result_after_subject[$i][0] . "'>" . $result_after_subject[$i][0] . "</option>" ;
+                                echo "<option value='" . htmlspecialchars($result_after_subject[$i][0], ENT_QUOTES, 'UTF-8') . "'>" . htmlspecialchars($result_after_subject[$i][0], ENT_QUOTES, 'UTF-8') . "</option>" ;
                             }
                         } ?>
                     </select>
@@ -100,9 +100,9 @@ date_default_timezone_set ('Asia/Tokyo');
                         <option value="" hidden>担当を選択</option>
                         <?php for ($i = 0; $i < count($result_after_teacher); $i++){
                             if ($result_after_teacher[$i][0] == $_POST["teacher-select"]) {
-                                echo "<option value='" . $result_after_teacher[$i][0] . "' selected>" . $result_after_teacher[$i][0] . "</option>" ;
+                                echo "<option value='" . htmlspecialchars($result_after_teacher[$i][0], ENT_QUOTES, 'UTF-8') . "' selected>" . htmlspecialchars($result_after_teacher[$i][0], ENT_QUOTES, 'UTF-8') . "</option>" ;
                             } else {
-                                echo "<option value='" . $result_after_teacher[$i][0] . "'>" . $result_after_teacher[$i][0] . "</option>" ;
+                                echo "<option value='" . htmlspecialchars($result_after_teacher[$i][0], ENT_QUOTES, 'UTF-8') . "'>" . htmlspecialchars($result_after_teacher[$i][0], ENT_QUOTES, 'UTF-8') . "</option>" ;
                             }
                         } ?>
                     </select>
@@ -112,9 +112,9 @@ date_default_timezone_set ('Asia/Tokyo');
                         <option value="" hidden>教室を選択</option>
                         <?php for ($i = 0; $i < count($result_after_place); $i++){
                             if ($result_after_place[$i][0] == $_POST["place-select"]) {
-                                echo "<option value='" . $result_after_place[$i][0] . "' selected>" . $result_after_place[$i][0] . "</option>" ;
+                                echo "<option value='" . htmlspecialchars($result_after_place[$i][0], ENT_QUOTES, 'UTF-8') . "' selected>" . htmlspecialchars($result_after_place[$i][0], ENT_QUOTES, 'UTF-8') . "</option>" ;
                             } else {
-                                echo "<option value='" . $result_after_place[$i][0] . "'>" . $result_after_place[$i][0] . "</option>" ;
+                                echo "<option value='" . htmlspecialchars($result_after_place[$i][0], ENT_QUOTES, 'UTF-8') . "'>" . htmlspecialchars($result_after_place[$i][0], ENT_QUOTES, 'UTF-8') . "</option>" ;
                             }
                         } ?>
                     </select>
