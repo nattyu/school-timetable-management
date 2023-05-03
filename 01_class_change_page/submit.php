@@ -36,10 +36,15 @@ if (!empty($_POST["class-select"]) && !empty($_POST["day-select"]) && !empty($_P
       "INSERT INTO temporary_data_storage (
          class_data, day_data, time_data, date_data, create_at
       ) VALUES(
-         $selected_class, '$selected_day', '$selected_time', '$selected_date', now()
+         ?, ?, ?, ?, now()
       )"
    );
-   $stmt_insert_temporary_data->execute();
+   $stmt_insert_temporary_data->execute([
+      $selected_class,
+      "$selected_day",
+      "$selected_time",
+      "$selected_date"
+   ]);
 
    $selected_column = $selected_day . '_' . $selected_time;
 }
